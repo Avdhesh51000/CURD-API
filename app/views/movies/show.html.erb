@@ -1,0 +1,72 @@
+<% if current_user %>
+<h3 align = RIGHT><%= link_to "logout now" ,logout_path(current_user)%> </h3>
+<b>Welcome User </b> 
+<br>
+<br>
+
+<p>
+  <strong>Movie Name:</strong>
+  <%= @movies.mname %>
+</p>
+ 
+<p>
+  <strong>Iamge for the Movie:</strong>
+  <%= image_tag movie_serve_path(@movies) %>
+  <br>
+  <br>
+
+  <%= link_to "like me", like_path(@movies) %>&nbsp&nbsp &nbsp&nbsp&nbsp &nbsp<%= link_to "dislike me", dislike_path(@movies) %><br>
+
+  <%= @movies.like %>&nbsp Likes	&nbsp&nbsp&nbsp&nbsp&nbsp	<%= @movies.dislike %>&nbsp Dislikes
+  
+  <%#= image_tag movies.image.url %>
+  <%#= @article.text %>
+</p>
+<%#= image_tag("rss.jpg", :alt => "rss feed") %>
+<br>
+##################################################
+<br>
+
+<h2>Comments</h2>
+<% @movies.comments.each do |comment| %>
+  <p>
+    <strong>Comment:</strong>
+    <%= comment.comment %>
+  </p>
+<p>
+    <strong>Commented by:</strong>
+    <%= comment.commented_by %>
+  </p>
+
+  <br>
+
+ ------------------------------
+  
+<% end %>
+<br>
+###################################################
+<br>
+
+<h2>Add a comment:</h2>
+<%= form_with(model: [ @movies, @movies.comments.build ], local: true) do |form| %>
+  <p>
+    <%= form.label :comment %><br>
+    <%= form.text_field :comment %>
+  </p>
+  
+  <p>
+    <%= form.submit %>
+  </p>
+<% end %>
+ 
+<br>
+<br>
+<%= link_to 'Back', movies_path %>
+
+<% else %>
+
+
+<%= render 'movies/logout' %>
+
+
+<% end %>

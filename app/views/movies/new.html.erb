@@ -1,0 +1,35 @@
+<% if current_user %>
+<h3 align = RIGHT><%= link_to "logout now" ,logout_path(current_user)%> </h3>
+<b>Welcome User </b> 
+<br>
+<br>
+
+<h2>Create a movie</h2>
+
+<%= form_with scope: :movies ,url: movies_path ,local: true do|f| %>
+
+  <p>
+    <b>Movie Name:</b><br>
+    <%= f.text_field :mname %>
+  </p>
+ 
+  <p>
+    <b>Upload Image</b><br><br>
+    <%= f.file_field :mdata%>
+  </p>
+ 
+  <p>
+    <%= f.submit 'Save' %>
+  </p>
+<% end %>
+<br>
+<br>
+<%= link_to 'Back', movies_path %>
+
+<% else %>
+
+
+<%= render 'movies/logout' %>
+
+
+<% end %>

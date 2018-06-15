@@ -1,0 +1,20 @@
+<% if current_user %>
+ <h3 align = RIGHT><%= link_to "logout now" ,logout_path(current_user)%> </h3>
+<b>Welcome User </b> 
+<center>
+
+<br>
+<br>
+<b>  <%= link_to "Post Your Movies", new_movie_path %> </b>
+<br>
+<br>
+<b> <%= link_to "See Posted Movies", movies_path %></b>
+
+</center>
+<% else %>
+
+
+<%= render 'movies/logout' %>
+
+
+<% end %>

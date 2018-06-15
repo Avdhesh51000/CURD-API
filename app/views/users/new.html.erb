@@ -1,0 +1,43 @@
+<b>Signup</b>
+
+
+<%= form_with scope: :users, url: users_path, local: true do |f| %>
+
+<% if @users.errors.any? %>
+    <div id="error_explanation">
+      <h2>
+        <%= pluralize(@users.errors.count, "error") %> prohibited
+        this article from being saved:
+      </h2>
+      <ul>
+        <% @users.errors.full_messages.each do |msg| %>
+          <li><%= msg %></li>
+        <% end %>
+      </ul>
+    </div>
+  <% end %>
+<br>
+<%= f.label :name %>
+<br>
+<%= f.text_field :name %>
+<br>
+<br>
+<%= f.label :email %>
+<br>
+<%= f.text_field :email %>
+<br><br>
+<%= f.label :password %>
+<br>
+<%= f.password_field :password %>
+<br><br>
+<%= f.label :Confirm_Password %>
+<br>
+<%= f.password_field :password_confirmation %>
+<br><br>
+<%= f.submit "Create Account" %>
+
+<% end %>
+
+<br>
+<br>
+<b>Login Now: &nbsp <%= link_to "click Here", login_path %></b>

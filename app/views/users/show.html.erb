@@ -1,0 +1,15 @@
+<center>You have successfully Registered.
+	<br>
+<br>
+<b>Name:<b> &nbsp <%=@users.name %>
+<br>
+<b>E-mail:</b> &nbsp <%= @users.email %>
+<br>
+<br>
+
+You May procced to <%= link_to "Login now", login_path%>
+<br>
+<br>
+<%= link_to "Back", users_path %>
+
+</center>
