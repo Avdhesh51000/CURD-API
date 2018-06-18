@@ -1,10 +1,12 @@
 class User < ApplicationRecord
  	 has_secure_password
    	 has_many :friendships, dependent: :destroy
-	 has_many :friends ,-> { where(friendships: {status: 'accepted'})} , :through => :friendships 
+	 has_many :friends ,-> { where friendships: {status: 'accepted'} } , :through => :friendships 
 	 has_many :inverse_friendships, :class_name => "Friendship", :foreign_key => "friend_id"
  	 has_many :inverse_friends,-> { where(friendships: {status: 'accepted'})}, :through => :inverse_friendships, :source => :user
  	 has_many :pending_request,-> { where(friendships: {status: 'pending'})}, :through => :inverse_friendships, :source => :user
+
+ 	 
 
  	 validates :name, presence: true, length: { minimum: 3 , maximum: 20 }, allow_blank: true, on: :create
  	 validates_format_of :name, :with => /[A-Za-z]+/ ,  on: :create
@@ -13,8 +15,7 @@ class User < ApplicationRecord
 	 validates_format_of :email, :with =>/\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/, message: "must be a abc123@abc.com" ,on: :create 
 	 validates :password, presence: true, length: { minimum: 5 , maximum: 18 }
 
-
-
+	 
 	def accept(user_id)
 		@b=Friendship.find_by(user_id: user_id, friend_id: id)
 		if @b != nil
@@ -25,8 +26,6 @@ class User < ApplicationRecord
 		else
 			errors.add(:id, "You are not allowed to accept")
 		end
-
-
 	end
 
 	def status(user_id)
