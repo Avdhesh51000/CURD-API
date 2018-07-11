@@ -1,0 +1,2 @@
+class Mymodel < ApplicationRecord
+end
