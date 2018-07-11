@@ -3,18 +3,9 @@ class Movie < ApplicationRecord
 
 	has_many :comments, dependent: :destroy
 
+	has_many :likes, as: :likeable,  dependent: :destroy
 
-validate :dislike , :dolike
+	belongs_to :user
 
-	def dolike
-		self.dislike=0;
-		
-	end
-	validate :like , :checklike
-
-	def checklike
-		self.like=0;
-		
-	end
 	
 end

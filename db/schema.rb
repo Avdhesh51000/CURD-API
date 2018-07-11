@@ -10,15 +10,26 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2018_06_14_113641) do
+ActiveRecord::Schema.define(version: 2018_06_19_042741) do
 
   create_table "comments", force: :cascade do |t|
     t.string "comment"
-    t.string "commented_by"
+    t.integer "user_id"
     t.integer "movie_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["movie_id"], name: "index_comments_on_movie_id"
+    t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likes", force: :cascade do |t|
+    t.integer "user_id"
+    t.integer "likeable_id"
+    t.string "likeable_type"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["likeable_type", "likeable_id"], name: "index_likes_on_likeable_type_and_likeable_id"
+    t.index ["user_id"], name: "index_likes_on_user_id"
   end
 
   create_table "movies", force: :cascade do |t|
@@ -26,10 +37,10 @@ ActiveRecord::Schema.define(version: 2018_06_14_113641) do
     t.binary "mdata", null: false
     t.string "mfilename"
     t.string "mime_type"
-    t.integer "like"
-    t.integer "dislike"
+    t.integer "user_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_movies_on_user_id"
   end
 
   create_table "users", force: :cascade do |t|
