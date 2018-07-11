@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>FirstHtmlProject</title>
+    <link rel="shortcut icon" href="/assets/favcon.png" type="image/x-icon">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js"></script> -->
+   <!--  <script  src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.1/js/bootstrap.min.js.map" ></script> -->
+  </head>
+
+  <body>
+
+  <% if request.path == root_path ||  request.path ==faq_path || request.path ==help_path  ||request.path == pp_path  || request.path ==tc_path %>
+
+  <%= render "layouts/header" %>
+  <% end %>
+  <%=yield %>
+  <% if request.path == root_path ||  request.path ==faq_path || request.path ==help_path  ||request.path == pp_path  || request.path ==tc_path %>
+  <%= render "layouts/footer" %>
+  <% end %>
+    
+  </body>
+</html>
