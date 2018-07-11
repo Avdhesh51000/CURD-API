@@ -1,0 +1,17 @@
+<b>Show</b>
+<br>
+<br>
+
+Name is: 
+<b> <%= @users.name %></b><br><br>
+Mobile No is: 
+<b> <%= @users.mobile_no %></b>
+<%#= @users.name %>
+<br>
+<br>
+<%= form_with scope: :user,url: abc_path ,local: true do |f|  %>
+<%= f.text_field :otp %>
+<%= f.submit "Submit Otp"  %>
+
+<% end %>
+
