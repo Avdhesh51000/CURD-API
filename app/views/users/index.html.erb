@@ -1,0 +1,36 @@
+<% flash[:notice] %>
+
+<% if $a.present? %>
+	<%= "There is Errors at these line #{$a} " %>
+	<% $a=[] %>
+	<% $count=0 %>
+<% end %>
+
+<table>
+	<thead>
+	<tr>
+		<th> Name</th>
+		<th>Steps</th>
+		<th>var1</th>
+		<th>var2</th>
+	</tr>
+	</thead>
+	<tbody>
+		<% @users.each do|a| %>
+		<tr>
+			<td> <%= a.name %> </td>
+			<td> <%= a.step %> </td>
+			<td> <%= a.var1  %></td>
+			<td> <%= a.var2 %></td>
+		</tr>
+		<% end %>
+	</tbody>
+</table>
+
+<div>
+	<h4> Import data </h4>
+	<%= form_tag import_users_path, multipart: true do %>
+	<%= file_field_tag :file %>
+	<%= submit_tag "Import CSV" %>
+	<% end %>
+</div>
