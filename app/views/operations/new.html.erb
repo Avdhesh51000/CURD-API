@@ -1,0 +1,68 @@
+<h1>Input Data</h1>
+<br>
+<brr>
+<center>
+	<table cellspacing=20>
+	
+	<%= form_with scope: :operations ,url: operations_path, local: true do |f| %>
+	<tr>
+	<td>Name:</td>
+	<td> <%= f.text_field :name %></td>
+	</tr>
+	<td>Mile Stone:</td>
+	<td> <%= f.text_field :milestone %></td>
+	</tr>
+	<tr>
+	<td>Issue Title:</td>
+	<td> <%= f.text_field :issuetitle %></td>
+	</tr>
+	<tr>
+	<td>Work Effort:</td>
+	<td> <%= f.text_field :work_effort %></td>
+	</tr>
+	<tr>
+	<td>Working day:</td>
+	<td> <%= f.date_field :working_day %></td>
+	</tr>
+	<tr>
+	<td>Estimated effort to complete: </td>
+	<td><%= f.text_field :estimated_effort_to_complete %></td>
+	</tr>
+	<tr>
+	<td>Estimated project completion date:</td>
+	<td><%= f.date_field :estimated_project_completion_date %></td>
+	</tr>
+	<tr>
+	<td>Planed start date:</td>
+    <td><%= f.date_field :planned_start_date %></td>
+	</tr>
+	<tr>
+	<td>Planed end date:</td>
+    <td><%= f.date_field :planed_end_date %></td>
+	</tr>
+	<tr>
+	<td>Actual start date:</td>
+    <td><%= f.date_field :actual_start_date %></td>
+	</tr>
+	
+	<tr>
+	<td>Actual end date:</td>
+    <td><%= f.date_field :actual_end_date %></td>
+	</tr>
+	<tr>
+	<td>RePlaned end date:</td>
+    <td><%= f.date_field :replanned_end_date %></td>
+	</tr>
+	<tr>
+	<td>Estimated_effort:</td>
+    <td><%= f.text_field :estimated_effort %></td>
+	</tr>
+
+	<tr>
+	<td> </td>
+	<td > <%= f.submit "Save" %></td>
+	</tr>
+	<% end %>
+	</table>
+
+</center>
