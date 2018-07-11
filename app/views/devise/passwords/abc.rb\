@@ -1,0 +1,21 @@
+#def abc(@issue_details)
+#@issue_details.each do |f| 
+
+ # f.try(:project_name)  
+
+ # f.try(:milestone_title)      
+
+  #user_name(f.try(:assignee_id)) 
+
+  #f.try(:issue_title) 
+
+
+ # f.try(:work_effort)
+
+
+  #f.try(:working_day)
+
+ #f.try(:estimated_efforts)
+
+#end
+#end
